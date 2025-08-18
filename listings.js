@@ -1,5 +1,10 @@
 const listings = [
-  { img: 'building.jpg', title: 'JGD Residency', desc: 'Premium 2 & 3 BHK homes in Hyderabad' },
+  {
+    img: 'building.jpg',
+    title: 'Jai Guru Datta Residency',
+    desc: 'GHMC-approved 2 & 3 BHK homes in Dathanagar, Kanchan Bagh, Hyderabad',
+    brochure: 'JGD-Residency-Brochure.pdf'
+  },
   { img: 'hero.jpg', title: 'Modern Interiors', desc: 'Thoughtfully designed living spaces' }
 ];
 
@@ -9,7 +14,13 @@ function Listing(props) {
     { className: 'property fade-in' },
     React.createElement('img', { src: props.img, alt: props.title }),
     React.createElement('h3', null, props.title),
-    React.createElement('p', null, props.desc)
+    React.createElement('p', null, props.desc),
+    props.brochure &&
+      React.createElement(
+        'a',
+        { href: props.brochure, target: '_blank', className: 'brochure-link' },
+        'View Brochure'
+      )
   );
 }
 
