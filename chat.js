@@ -3,18 +3,12 @@
   emailjs.init('YOUR_USER_ID');
 })();
 
-// This example uses the free Affiliate+ Chatbot API
-// no API key required
-
 const chatLog = document.getElementById('chat-log');
 const chatInput = document.getElementById('chat-input');
 const clientEmail = document.getElementById('client-email');
 
 // Stores text lines for emailing
 const messages = [];
-
-// Session identifier for the free chatbot API
-const sessionId = Math.random().toString(36).substring(2);
 
 function appendMessage(text, sender = 'client') {
   const msg = document.createElement('div');
@@ -35,24 +29,26 @@ function getBasicInfoResponse(text) {
     return 'Reach us at (555) 123-4567 or info@glamourhomebuilders.com.';
   }
   if (lower.includes('location') || lower.includes('where')) {
-    return 'Our showroom is located at 123 Main Street, Springfield.';
+    return 'JGD Residency is located at Dathanagar, Kanchan Bagh, Hyderabad.';
+  }
+  if (lower.includes('brochure')) {
+    return 'View our brochure at https://glamourhomebuilder.online/JGD-Residency-Brochure.pdf';
   }
   return null;
 }
 
-async function fetchAIResponse(text) {
-  const params = new URLSearchParams({
-    message: text,
-    botname: 'GlamourAI',
-    ownername: 'Glamour Home Builders',
-    sessionid: sessionId
-  });
-  const response = await fetch('https://api.affiliateplus.xyz/api/chatbot?' + params.toString());
-  const data = await response.json();
-  return data.message.trim();
+function getFallbackResponse(text) {
+  const lower = text.toLowerCase();
+  if (['hi', 'hello', 'hey'].some((g) => lower.startsWith(g))) {
+    return 'Hello! How can I assist you with JGD Residency?';
+  }
+  if (lower.includes('thank')) {
+    return "You're welcome! Let me know if you need details on floor plans or pricing.";
+  }
+  return 'Thanks for reaching out! Our team will get back to you with more information soon.';
 }
 
-document.getElementById('chat-send').addEventListener('click', async function() {
+document.getElementById('chat-send').addEventListener('click', function() {
   const text = chatInput.value.trim();
   if (!text) return;
 
@@ -65,13 +61,7 @@ document.getElementById('chat-send').addEventListener('click', async function() 
     return;
   }
 
-  try {
-    const reply = await fetchAIResponse(text);
-    appendMessage(reply, 'bot');
-  } catch (err) {
-    console.error('AI response failed', err);
-    appendMessage('Sorry, I am having trouble responding right now.', 'bot');
-  }
+  appendMessage(getFallbackResponse(text), 'bot');
 });
 
 document.getElementById('chat-email').addEventListener('click', function() {
@@ -100,4 +90,4 @@ chatInput.addEventListener('keypress', function(e) {
 });
 
 appendMessage('Welcome to Glamour Home Builders! We craft luxury residences for modern living.', 'bot');
-appendMessage('Visit us at 123 Main Street, Springfield or call (555) 123-4567.', 'bot');
+appendMessage('Visit our JGD Residency at Dathanagar, Kanchan Bagh, Hyderabad or call (555) 123-4567.', 'bot');
