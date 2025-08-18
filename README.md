@@ -1,12 +1,12 @@
 # Jai Guru Datta Residency Website
 
-This repository contains a lightweight, static website for Shambhavi Constructions showcasing their ongoing project,
+This repository contains a lightweight, static website for Glamour Home Builders showcasing their ongoing project,
 **Jai Guru Datta Residency**.
 
 ## Getting started
 
 To preview the site locally, open `index.html` in a web browser. All assets, including the project brochure PDF, reside
-within the `shambhavi-site` directory.
+within the repository root.
 
 ## Development & maintenance
 
@@ -17,5 +17,10 @@ consider migrating to a component-based framework such as Next.js or Astro for b
 ## Deployment
 
 For a simple deployment, push this repository to GitHub and enable GitHub Pages on the default branch. Alternatively,
-upload the contents of the `shambhavi-site` directory to any static hosting service, such as Netlify, Vercel or your
-preferred web server.
+upload the contents of the repository to any static hosting service, such as Netlify, Vercel or your preferred web
+server.
+
+## Features
+
+- Clean, responsive layout built with plain HTML and CSS
+- Specification section uses Font Awesome icons for quick visual reference

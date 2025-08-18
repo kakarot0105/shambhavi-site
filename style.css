@@ -83,6 +83,16 @@ h2 {
   padding: 0;
   list-style: none;
 }
+
+.grid li {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.grid li i {
+  color: #d86b27;
+}
 .gallery {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
