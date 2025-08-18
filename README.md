@@ -3,6 +3,8 @@
 This repository contains a lightweight, static website for Glamour Home Builders showcasing their ongoing project,
 **Jai Guru Datta Residency**.
 
+Live site: https://glamourhomebuilder.online/
+
 ## Getting started
 
 To preview the site locally, open `index.html` in a web browser. All assets, including the project brochure PDF, reside
@@ -23,6 +25,10 @@ The contact section includes a lightweight chat box that can email a transcript 
    dashboard.
 
 Without these values the chat will work locally, but the "Email Conversation" button will not send any messages.
+
+### Chatbot AI
+
+The chat interface uses the free [Affiliate+ chatbot API](https://api.affiliateplus.xyz/). No API key is required, though responses may be generic. To use another model, update the endpoint in `chat.js`.
 
 ## Deployment
 
