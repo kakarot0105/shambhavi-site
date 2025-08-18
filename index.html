@@ -62,18 +62,7 @@
 
   <section id="listings" class="section fade-in">
     <h2>Featured Listings</h2>
-    <div class="listings">
-      <div class="property fade-in">
-        <img src="building.jpg" alt="JGD Residency exterior" />
-        <h3>JGD Residency</h3>
-        <p>Premium 2 &amp; 3 BHK homes in Hyderabad</p>
-      </div>
-      <div class="property fade-in">
-        <img src="hero.jpg" alt="Spacious interiors" />
-        <h3>Modern Interiors</h3>
-        <p>Thoughtfully designed living spaces</p>
-      </div>
-    </div>
+    <div id="listings-root"></div>
   </section>
 
   <section id="location" class="section alt fade-in">
@@ -99,8 +88,9 @@
   <section id="contact" class="section fade-in">
     <h2>Chat With Us</h2>
     <div class="chat-box">
+      <div class="chat-header">GlamourAI</div>
       <div id="chat-log" class="chat-log"></div>
-      <input type="text" id="chat-input" placeholder="Type your message..." />
+      <input type="text" id="chat-input" placeholder="Ask about our project, contact or location..." />
       <div class="chat-actions">
         <button id="chat-send">Send</button>
         <button id="chat-email">Email Conversation</button>
@@ -116,6 +106,9 @@
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
+  <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="listings.js"></script>
   <script src="chat.js"></script>
   <script src="app.js"></script>
   </body>
