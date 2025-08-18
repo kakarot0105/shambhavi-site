@@ -26,7 +26,7 @@ function getBasicInfoResponse(text) {
     return 'Glamour Home Builders crafts luxury residences with modern amenities.';
   }
   if (lower.includes('contact') || lower.includes('phone') || lower.includes('email')) {
-    return 'Reach us at (555) 123-4567 or info@glamourhomebuilders.com.';
+    return 'Reach us at 9014308289 or info@glamourhomebuilders.com.';
   }
   if (lower.includes('location') || lower.includes('where')) {
     return 'JGD Residency is located at Dathanagar, Kanchan Bagh, Hyderabad.';
@@ -90,4 +90,4 @@ chatInput.addEventListener('keypress', function(e) {
 });
 
 appendMessage('Welcome to Glamour Home Builders! We craft luxury residences for modern living.', 'bot');
-appendMessage('Visit our JGD Residency at Dathanagar, Kanchan Bagh, Hyderabad or call (555) 123-4567.', 'bot');
+appendMessage('Visit our JGD Residency at Dathanagar, Kanchan Bagh, Hyderabad or call (9014308289.', 'bot');
