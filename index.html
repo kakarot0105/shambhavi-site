@@ -66,12 +66,26 @@
       loading="lazy"></iframe>
   </section>
 
+  <section id="contact" class="section">
+    <h2>Chat With Us</h2>
+    <div class="chat-box">
+      <div id="chat-log" class="chat-log"></div>
+      <input type="text" id="chat-input" placeholder="Type your message..." />
+      <div class="chat-actions">
+        <button id="chat-send">Send</button>
+        <button id="chat-email">Email Conversation</button>
+      </div>
+      <input type="email" id="client-email" placeholder="Your email (optional)" />
+    </div>
+  </section>
+
   <footer class="footer">
     <p>&copy; <span id="year"></span> Glamour Home Builders. All rights reserved.</p>
   </footer>
-
   <script>
     document.getElementById('year').textContent = new Date().getFullYear();
   </script>
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script src="chat.js"></script>
   </body>
   </html>
