@@ -123,22 +123,41 @@ h2 {
   .chat-box {
     max-width: 600px;
     margin: 0 auto;
-    border: 1px solid #ccc;
+    border: 2px solid #0ea5e9;
     border-radius: 8px;
     padding: 1rem;
-    background: #fff;
+    background: #f0f9ff;
+  }
+
+  .chat-header {
+    text-align: center;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
+    color: #0ea5e9;
   }
 
   .chat-log {
     height: 200px;
     overflow-y: auto;
-    border: 1px solid #eee;
+    border: 1px solid #bae6fd;
+    background: #fff;
     padding: 0.5rem;
     margin-bottom: 0.5rem;
   }
 
-  .chat-message {
+  .chat-message.bot {
+    background: #e0f2fe;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
     margin-bottom: 0.25rem;
+  }
+
+  .chat-message.client {
+    background: #d1fae5;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    margin-bottom: 0.25rem;
+    text-align: right;
   }
 
   #chat-input,
@@ -158,7 +177,7 @@ h2 {
   .chat-actions button {
     flex: 1;
     padding: 0.5rem;
-    background: #183153;
+    background: #0ea5e9;
     color: #fff;
     border: none;
     border-radius: 4px;
@@ -166,7 +185,7 @@ h2 {
   }
 
   .chat-actions button:hover {
-    background: #d86b27;
+    background: #0284c7;
   }
 
 @media (max-width: 600px) {

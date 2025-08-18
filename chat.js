@@ -26,6 +26,20 @@ function appendMessage(text, sender = 'client') {
   messages.push(prefix + text);
 }
 
+function getBasicInfoResponse(text) {
+  const lower = text.toLowerCase();
+  if (lower.includes('project')) {
+    return 'Glamour Home Builders crafts luxury residences with modern amenities.';
+  }
+  if (lower.includes('contact') || lower.includes('phone') || lower.includes('email')) {
+    return 'Reach us at (555) 123-4567 or info@glamourhomebuilders.com.';
+  }
+  if (lower.includes('location') || lower.includes('where')) {
+    return 'Our showroom is located at 123 Main Street, Springfield.';
+  }
+  return null;
+}
+
 async function fetchAIResponse(text) {
   const params = new URLSearchParams({
     message: text,
@@ -44,6 +58,12 @@ document.getElementById('chat-send').addEventListener('click', async function() 
 
   appendMessage(text, 'client');
   chatInput.value = '';
+
+  const basic = getBasicInfoResponse(text);
+  if (basic) {
+    appendMessage(basic, 'bot');
+    return;
+  }
 
   try {
     const reply = await fetchAIResponse(text);
@@ -71,3 +91,13 @@ document.getElementById('chat-email').addEventListener('click', function() {
     alert('Failed to send conversation.');
   });
 });
+
+chatInput.addEventListener('keypress', function(e) {
+  if (e.key === 'Enter') {
+    e.preventDefault();
+    document.getElementById('chat-send').click();
+  }
+});
+
+appendMessage('Welcome to Glamour Home Builders! We craft luxury residences for modern living.', 'bot');
+appendMessage('Visit us at 123 Main Street, Springfield or call (555) 123-4567.', 'bot');
