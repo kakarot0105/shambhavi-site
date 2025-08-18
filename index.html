@@ -17,7 +17,9 @@
         <li><a href="#about">About</a></li>
         <li><a href="#specs">Specifications</a></li>
         <li><a href="#gallery">Gallery</a></li>
+        <li><a href="#listings">Listings</a></li>
         <li><a href="#location">Location</a></li>
+        <li><a href="#enquire">Enquire</a></li>
         <li><a href="#contact">Contact</a></li>
       </ul>
     </div>
@@ -31,12 +33,12 @@
     </div>
   </header>
 
-  <section id="about" class="section">
+  <section id="about" class="section fade-in">
     <h2>About the Project</h2>
     <p>JGD Residency is an elegant residential project located in Dathanagar, Kanchan Bagh, Hyderabad. Developed by Glamour Home Builders, it features thoughtfully designed floor plans, GHMC approval, and top-tier construction standards.</p>
   </section>
 
-  <section id="specs" class="section alt">
+  <section id="specs" class="section alt fade-in">
     <h2>Specifications</h2>
     <ul class="grid">
       <li><i class="fa-solid fa-building" aria-hidden="true"></i> <strong>Structure:</strong> RCC framed, red brick walls</li>
@@ -49,7 +51,7 @@
     </ul>
   </section>
 
-  <section id="gallery" class="section">
+  <section id="gallery" class="section fade-in">
     <h2>Gallery</h2>
     <div class="gallery">
       <img src="hero.jpg" alt="Building" />
@@ -58,7 +60,23 @@
     </div>
   </section>
 
-  <section id="location" class="section alt">
+  <section id="listings" class="section fade-in">
+    <h2>Featured Listings</h2>
+    <div class="listings">
+      <div class="property fade-in">
+        <img src="building.jpg" alt="JGD Residency exterior" />
+        <h3>JGD Residency</h3>
+        <p>Premium 2 &amp; 3 BHK homes in Hyderabad</p>
+      </div>
+      <div class="property fade-in">
+        <img src="hero.jpg" alt="Spacious interiors" />
+        <h3>Modern Interiors</h3>
+        <p>Thoughtfully designed living spaces</p>
+      </div>
+    </div>
+  </section>
+
+  <section id="location" class="section alt fade-in">
     <h2>Location</h2>
     <p>Dathanagar, Kanchan Bagh, Hyderabad</p>
     <iframe
@@ -67,7 +85,18 @@
       loading="lazy"></iframe>
   </section>
 
-  <section id="contact" class="section">
+  <section id="enquire" class="section fade-in">
+    <h2>Enquire Now</h2>
+    <form id="lead-form" class="lead-form">
+      <input type="text" name="name" placeholder="Your Name" required />
+      <input type="email" name="email" placeholder="Email" required />
+      <input type="tel" name="phone" placeholder="Phone Number" required />
+      <textarea name="message" placeholder="Message" required></textarea>
+      <button type="submit">Submit</button>
+    </form>
+  </section>
+
+  <section id="contact" class="section fade-in">
     <h2>Chat With Us</h2>
     <div class="chat-box">
       <div id="chat-log" class="chat-log"></div>
@@ -88,5 +117,6 @@
   </script>
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script src="chat.js"></script>
+  <script src="app.js"></script>
   </body>
   </html>
