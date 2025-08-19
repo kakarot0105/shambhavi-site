@@ -29,17 +29,15 @@
           {
             data: 'floorplan/JGD-Floorplan.pdf',
             type: 'application/pdf',
-            className: 'floorplan-frame'
+            width: '100%',
+            height: '600px',
+            className: 'floorplan-frame',
+            'aria-label': 'Floor Plan PDF Viewer'
           },
           React.createElement(
             'p',
             { className: 'pdf-message' },
-            'PDF failed to load. ',
-            React.createElement(
-              'a',
-              { href: 'floorplan/JGD-Floorplan.pdf' },
-              'Download Floor Plan (PDF)'
-            )
+            'Unable to display the floor plan. Please use the link below to download the PDF.'
           )
         ),
         React.createElement(
