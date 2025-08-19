@@ -1,4 +1,8 @@
 /* Color palette derived from JGD Residency brochure */
+:root {
+  --accent-color: #B8860B;
+}
+
 body {
   margin: 0;
   font-family: 'Roboto', sans-serif;
@@ -21,10 +25,10 @@ body {
 }
 .logo {
   font-weight: 700;
-  color: #d86b27;
+  color: var(--accent-color);
 }
 .logo a {
-  color: #d86b27;
+  color: var(--accent-color);
   text-decoration: none;
 }
 .nav-links {
@@ -77,8 +81,9 @@ body {
 .alt {
   background: #eaeaea;
 }
-h2 {
-  color: #d86b27;
+h2,
+h3 {
+  color: var(--accent-color);
 }
 .grid {
   display: grid;
@@ -95,7 +100,7 @@ h2 {
 }
 
 .grid li i {
-  color: #d86b27;
+  color: var(--accent-color);
 }
 .gallery {
   display: grid;
@@ -131,7 +136,7 @@ h2 {
   .chat-box {
     max-width: 600px;
     margin: 0 auto;
-    border: 2px solid #0ea5e9;
+    border: 2px solid var(--accent-color);
     border-radius: 8px;
     padding: 1rem;
     background: #f0f9ff;
@@ -141,13 +146,13 @@ h2 {
     text-align: center;
     font-weight: bold;
     margin-bottom: 0.5rem;
-    color: #0ea5e9;
+    color: var(--accent-color);
   }
 
   .chat-log {
     height: 200px;
     overflow-y: auto;
-    border: 1px solid #bae6fd;
+    border: 1px solid #f1e0c5;
     background: #fff;
     padding: 0.5rem;
     margin-bottom: 0.5rem;
@@ -185,15 +190,16 @@ h2 {
   .chat-actions button {
     flex: 1;
     padding: 0.5rem;
-    background: #0ea5e9;
+    background: var(--accent-color);
     color: #fff;
     border: none;
     border-radius: 4px;
     cursor: pointer;
+    transition: background 0.2s ease-in-out;
   }
 
   .chat-actions button:hover {
-    background: #0284c7;
+    background: #8B6508;
   }
 
 @media (max-width: 600px) {
@@ -224,7 +230,7 @@ h2 {
 
 .property h3 {
   margin: 0.5rem 1rem;
-  color: #183153;
+  color: var(--accent-color);
 }
 
 .property p {
@@ -233,7 +239,7 @@ h2 {
 
 .brochure-link {
   display: inline-block;
-  color: #0ea5e9;
+  color: var(--accent-color);
   font-weight: 600;
   text-decoration: none;
   margin-bottom: 1rem;
@@ -246,15 +252,16 @@ h2 {
 .brochure-btn {
   display: inline-block;
   margin-top: 1rem;
-  background: #d86b27;
+  background: var(--accent-color);
   color: #fff;
   padding: 0.75rem 1.25rem;
   border-radius: 4px;
   text-decoration: none;
+  transition: background 0.2s ease-in-out;
 }
 
 .brochure-btn:hover {
-  background: #bf5c1f;
+  background: #8B6508;
 }
 
 /* Lead capture form */
@@ -275,15 +282,16 @@ h2 {
 
 .lead-form button {
   padding: 0.75rem;
-  background: #183153;
+  background: var(--accent-color);
   color: #fff;
   border: none;
   border-radius: 4px;
   cursor: pointer;
+  transition: background 0.2s ease-in-out;
 }
 
 .lead-form button:hover {
-  background: #d86b27;
+  background: #8B6508;
 }
 
 /* Fade-in animation */
@@ -332,7 +340,7 @@ h2 {
   margin: 0;
   font-size: 16px;
   font-weight: 800;
-  color: #222;
+  color: var(--accent-color);
 }
 .submeta { color: #6b7280; font-size: 12px; }
 .card-grid {
@@ -343,13 +351,51 @@ h2 {
 @media (max-width: 960px) { .card-grid { grid-template-columns: repeat(2, minmax(0,1fr)); } }
 @media (max-width: 640px) { .card-grid { grid-template-columns: 1fr; } }
 .cta-row { display: flex; gap: 10px; margin-top: 6px; }
-.btn { appearance: none; border: 1px solid #e5e7eb; background: #fff; color: #111827; padding: 10px 14px; border-radius: 10px; font-weight: 700; cursor: pointer; }
-.btn:hover { background: #f9fafb; }
-.btn-primary { border-color: #111827; background: #111827; color: #fff; }
-.btn-primary:hover { filter: brightness(1.1); }
-.badge { display: inline-block; margin-top: 6px; font-size: 12px; font-weight: 700; padding: 4px 10px; border-radius: 12px; }
-.badge.good { background: #10b981; color: #fff; }
-.badge.warn { background: #f59e0b; color: #fff; }
+.btn {
+  appearance: none;
+  border: 1px solid var(--accent-color);
+  background: var(--accent-color);
+  color: #fff;
+  padding: 10px 14px;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: filter 0.2s ease-in-out;
+}
+.btn:hover {
+  filter: brightness(0.9);
+}
+.btn-primary {
+  border-color: var(--accent-color);
+  background: var(--accent-color);
+  color: #fff;
+}
+.btn-primary:hover {
+  filter: brightness(0.9);
+}
+.btn-ghost {
+  background: transparent;
+  color: var(--accent-color);
+  border: 1px solid var(--accent-color);
+}
+.btn-ghost:hover {
+  background: var(--accent-color);
+  color: #fff;
+}
+.badge {
+  display: inline-block;
+  margin-top: 6px;
+  font-size: 12px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 12px;
+  background: var(--accent-color);
+  color: #fff;
+}
+.badge.good,
+.badge.warn {
+  background: var(--accent-color);
+}
 /* === End brochure-style === */
 /* === Specs Brochure Style === */
 .specs-grid {
@@ -371,11 +417,18 @@ h2 {
   margin: 0 0 6px;
   font-size: 16px;
   font-weight: 700;
-  color: #222;
+  color: var(--accent-color);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.spec-card h3 i {
+  font-size: 22px;
+  color: var(--accent-color);
 }
 .spec-card p {
   margin: 0;
   font-size: 14px;
   color: #444;
 }
-=======
