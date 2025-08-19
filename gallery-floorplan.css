@@ -84,13 +84,23 @@
 /* Floor plan styles */
 .floorplan-wrapper {
   margin-top: 1rem;
+  text-align: center;
 }
 
 .floorplan-frame {
   width: 100%;
-  min-height: 500px;
+  height: 600px;
   border: 1px solid #ccc;
   border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}
+
+@media (max-width: 640px) {
+  .floorplan-frame {
+    height: 400px;
+    max-height: 80vh;
+  }
 }
 
 .download-link {
