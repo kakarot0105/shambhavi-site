@@ -1,0 +1,113 @@
+/* Gallery & Floor Plan dropdown styles */
+
+.collapsible-toggle {
+  background: #183153;
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.25rem;
+  font-size: 1rem;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.collapsible-toggle:hover {
+  background: #0f223a;
+}
+
+.collapsible-toggle:focus-visible {
+  outline: 3px solid #ffd166;
+  outline-offset: 2px;
+}
+
+.collapsible-content {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease, opacity 0.4s ease;
+}
+
+.collapsible-content.open {
+  max-height: 2000px;
+  opacity: 1;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.gallery-card {
+  position: relative;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+  transition: box-shadow 0.3s ease;
+}
+
+.gallery-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+  transition: transform 0.3s ease;
+}
+
+.gallery-card::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(24,49,83,0.4), rgba(24,49,83,0.1));
+  pointer-events: none;
+}
+
+.gallery-card figcaption {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background: rgba(24,49,83,0.75);
+  color: #fff;
+  padding: 0.5rem;
+  font-size: 0.9rem;
+  text-align: center;
+}
+
+.gallery-card:hover {
+  box-shadow: 0 4px 12px rgba(0,0,0,0.25);
+}
+
+.gallery-card:hover img {
+  transform: scale(1.03);
+}
+
+/* Floor plan styles */
+.floorplan-wrapper {
+  margin-top: 1rem;
+}
+
+.floorplan-frame {
+  width: 100%;
+  min-height: 500px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+.download-link {
+  display: inline-block;
+  margin-top: 0.75rem;
+  color: #183153;
+}
+
+/* Noscript fallback */
+#gallery-noscript {
+  display: none;
+}
+#gallery-noscript:target {
+  display: grid;
+}
+.noscript-toggle {
+  display: inline-block;
+  margin-top: 0.5rem;
+  color: #183153;
+}

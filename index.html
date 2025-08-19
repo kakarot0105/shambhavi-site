@@ -8,6 +8,7 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-pMSsTUMRaVeuKiwoKP1HjqCOUMIqFZRMVAbwY/jGj54jjXNpMOGepQ6Xl0RH/e+N7Gsh/QZ/HqLF6Z+z+qw1Ig==" crossorigin="anonymous" referrerpolicy="no-referrer" />
   <link rel="stylesheet" href="style.css" />
+  <link rel="stylesheet" href="gallery-floorplan.css" />
 </head>
 <body>
   <nav class="nav">
@@ -75,18 +76,23 @@
 
   <section id="gallery" class="section fade-in">
     <h2>Gallery</h2>
-    <div class="gallery">
-      <img src="hero.jpg" alt="JGD Residency exterior" />
-      <img src="building.jpg" alt="JGD Residency view" />
-      <img src="map.jpg" alt="Location map" />
-    </div>
+    <div id="gallery-root"></div>
+    <noscript>
+      <a href="#gallery-noscript" class="noscript-toggle">View Gallery</a>
+      <div id="gallery-noscript" class="gallery-grid">
+        <img src="images/building1.jpg" alt="Exterior — building elevation" width="400" height="300" />
+        <img src="hero.jpg" alt="Site overview" width="400" height="300" />
+        <img src="building.jpg" alt="Street view" width="400" height="300" />
+      </div>
+    </noscript>
   </section>
 
   <section id="floorplan" class="section alt fade-in">
     <h2>Floor Plan</h2>
-    <div class="floorplan">
-      <img src="floorplan.jpg" alt="Typical floor plan" />
-    </div>
+    <div id="floorplan-root"></div>
+    <noscript>
+      <a href="floorplan/JGD-Floorplan.pdf">Download Floor Plan (PDF)</a>
+    </noscript>
   </section>
 
   <section id="listings" class="section fade-in">
@@ -137,6 +143,8 @@
   <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
   <script src="https://unpkg.com/react@17/umd/react.development.js"></script>
   <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js"></script>
+  <script src="gallery.js"></script>
+  <script src="floorplan.js"></script>
   <script src="listings.js"></script>
   <script src="chat.js"></script>
   <script src="app.js"></script>
