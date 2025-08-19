@@ -23,7 +23,7 @@
       beds: 3,
       baths: 3,
       size: 1590,
-      status: "Under Construction",
+      status: "Ready to Move",
       tower: "Block B",
       floor: 5,
       facing: "North-East",
