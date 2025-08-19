@@ -8,10 +8,15 @@
     useEffect(function () {
       fetch('Dathunagar%20-%20Typical%20Floor%20Plan.pdf', { method: 'HEAD' })
         .then(function (res) {
-          if (!res.ok) setPdfAvailable(false);
+          // Some hosts (e.g., GitHub Pages) do not support HEAD requests and
+          // return 405 even though the file exists. Treat that as success so
+          // the PDF preview remains visible.
+          if (!res.ok && res.status !== 405) setPdfAvailable(false);
         })
         .catch(function () {
-          setPdfAvailable(false);
+          // If the request itself fails (offline, CORS, etc.) default to
+          // showing the viewer rather than hiding it.
+          // The browser will handle displaying a broken object if necessary.
         });
     }, []);
 
