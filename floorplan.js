@@ -1,8 +1,97 @@
 (function () {
-  const { useState } = React;
+  const { useState, useEffect, useRef } = React;
 
   function FloorPlan() {
     const [open, setOpen] = useState(false);
+    const [viewerType, setViewerType] = useState(null); // 'image', 'pdf', 'message', 'pending'
+    const [pdfAvailable, setPdfAvailable] = useState(null);
+    const tsRef = useRef(Date.now());
+
+    useEffect(() => {
+      if (!open || viewerType !== null) return;
+
+      tsRef.current = Date.now();
+
+      const img = new Image();
+      img.onload = () => setViewerType('image');
+      img.onerror = () => setViewerType('pending');
+      img.src = `images/floorplan1.png?v=${tsRef.current}`;
+
+      fetch('floorplan/JGD-Floorplan.pdf', { method: 'HEAD' })
+        .then(res => setPdfAvailable(res.ok))
+        .catch(() => setPdfAvailable(false));
+    }, [open, viewerType]);
+
+    useEffect(() => {
+      if (!open) return;
+      if (viewerType === 'pending' && pdfAvailable !== null) {
+        setViewerType(pdfAvailable ? 'pdf' : 'message');
+      }
+    }, [open, viewerType, pdfAvailable]);
+
+    let viewer = null;
+    if (viewerType === 'image') {
+      viewer = React.createElement(
+        'div',
+        { className: 'floorplan-viewer', role: 'region', 'aria-label': 'Floor Plan Viewer' },
+        React.createElement('img', {
+          src: `images/floorplan1.png?v=${tsRef.current}`,
+          loading: 'lazy',
+          decoding: 'async',
+          alt: 'Floor plan preview',
+          width: 1600,
+          height: 1000
+        }),
+        pdfAvailable
+          ? React.createElement(
+              'a',
+              {
+                href: 'floorplan/JGD-Floorplan.pdf',
+                target: '_blank',
+                className: 'floorplan-link'
+              },
+              'View Full Floor Plan (PDF)'
+            )
+          : null
+      );
+    } else if (viewerType === 'pdf') {
+      viewer = React.createElement(
+        'div',
+        { className: 'floorplan-viewer', role: 'region', 'aria-label': 'Floor Plan Viewer' },
+        React.createElement('object', {
+          data: 'floorplan/JGD-Floorplan.pdf',
+          type: 'application/pdf',
+          'aria-label': 'Floor Plan PDF Viewer',
+          className: 'floorplan-pdf'
+        })
+      );
+    } else if (viewerType === 'message') {
+      viewer = React.createElement(
+        'div',
+        { className: 'floorplan-viewer', role: 'region', 'aria-label': 'Floor Plan Viewer' },
+        React.createElement('p', { className: 'floorplan-message' }, 'Floor plan will be added shortly.')
+      );
+    }
+
+    const downloadLink = pdfAvailable
+      ? React.createElement(
+          'a',
+          {
+            className: 'floorplan-link',
+            href: 'floorplan/JGD-Floorplan.pdf',
+            target: '_blank',
+            download: ''
+          },
+          'Download Floor Plan (PDF)'
+        )
+      : React.createElement(
+          'a',
+          {
+            className: 'floorplan-link',
+            'aria-disabled': 'true'
+          },
+          'Download Floor Plan (PDF)'
+        );
 
     return React.createElement(
       'div',
@@ -21,31 +110,17 @@
         'div',
         {
           id: 'floorplan-content',
-          className:
-            'collapsible-content floorplan-wrapper' + (open ? ' open' : ' hidden'),
-          role: 'region',
-          'aria-label': 'Floor plan'
+          className: 'collapsible-content floorplan-wrapper' + (open ? ' open' : ' hidden')
         },
-        React.createElement('img', {
-          src: 'floorplan1.png',
-          className: 'floorplan-frame',
-          alt: 'Floor Plan Image'
-        }),
-        React.createElement(
-          'a',
-          {
-            className: 'download-link',
-            href: 'Dathunagar%20-%20Typical%20Floor%20Plan.pdf',
-            download: ''
-          },
-          'Download Floor Plan (PDF)'
-        )
+        viewer,
+        downloadLink
       )
     );
   }
 
-  var root = document.getElementById('floorplan-root');
+  const root = document.getElementById('floorplan-root');
   if (root) {
     ReactDOM.render(React.createElement(FloorPlan), root);
   }
 })();
+
