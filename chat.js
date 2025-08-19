@@ -38,7 +38,7 @@ function getBasicInfoResponse(text) {
 
   // 3) Location
   if (has("location", "where", "address", "map", "directions")) {
-    return "📍 JGD Residency is located at Dathanagar, Kanchan Bagh, Hyderabad.";
+    return "📍 JGD Residency is located at Dathunagar, Kanchan Bagh, Hyderabad, near RCI Road and International Airport Road.";
   }
 
   // 4) Brochure link
@@ -93,7 +93,7 @@ function getBasicInfoResponse(text) {
 
   // 14) Utilities / water / power
   if (has("utilities", "water", "power", "electricity", "backup")) {
-    return "🔌 Standard power connections as per GHMC norms. 24×7 water supply. For backup details, please enquire.";
+    return "🔌 Standard power connections with generator-backed backup and 24×7 water supply.";
   }
 
   // 15) Legal / documents
@@ -104,6 +104,11 @@ function getBasicInfoResponse(text) {
   // 16) Neighborhood / connectivity
   if (has("nearby", "neighborhood", "schools", "hospital", "connectivity", "distance", "airport")) {
     return "🧭 Located in Kanchan Bagh, with good access to key city areas. For a location highlights sheet, please enquire.";
+  }
+
+  // 17) Availability / flats
+  if (has("availability", "available", "flats", "units")) {
+    return "🏢 Units available: 2 BHK (1170 sft) and 3 BHK (1590 sft), with only two flats per floor.";
   }
 
   // Default fallback
@@ -163,4 +168,4 @@ chatInput.addEventListener('keypress', function(e) {
 });
 
 appendMessage('Welcome to Glamour Home Builders! We craft luxury residences for modern living.', 'bot');
-appendMessage('Visit our JGD Residency at Dathanagar, Kanchan Bagh, Hyderabad or call (9014308289)', 'bot');
+appendMessage('Visit our JGD Residency at Dathunagar, Kanchan Bagh, Hyderabad near RCI Road and International Airport Road or call (9014308289)', 'bot');

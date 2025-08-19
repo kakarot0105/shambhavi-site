@@ -9,7 +9,7 @@
       image: "hero.jpg",          // swap to your preferred image later
       beds: 2,
       baths: 2,
-      size: 1125,
+      size: 1170,
       status: "Ready to Move",
       tower: "Block A",
       floor: 3,
@@ -22,7 +22,7 @@
       image: "floorplan.jpg",     // swap to your preferred image later
       beds: 3,
       baths: 3,
-      size: 1520,
+      size: 1590,
       status: "Under Construction",
       tower: "Block B",
       floor: 5,
