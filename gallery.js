@@ -4,7 +4,7 @@
   function Gallery() {
     const [open, setOpen] = useState(false);
     const images = [
-      { src: 'images/building1.jpg', alt: 'Exterior — building elevation', caption: 'Exterior View' },
+      { src: 'building1.jpeg', alt: 'Exterior — building elevation', caption: 'Exterior View' },
       { src: 'hero.jpg', alt: 'Site overview', caption: 'Site Overview' },
       { src: 'building.jpg', alt: 'Street view', caption: 'Street View' }
     ];
@@ -25,7 +25,7 @@
         'div',
         {
           id: 'gallery-content',
-          className: 'collapsible-content' + (open ? ' open' : ''),
+          className: 'collapsible-content' + (open ? ' open' : ' hidden'),
           role: 'region',
           'aria-label': 'Project gallery'
         },

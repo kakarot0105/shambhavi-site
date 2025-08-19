@@ -32,6 +32,10 @@
   opacity: 1;
 }
 
+.hidden {
+  display: none;
+}
+
 .gallery-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
@@ -107,6 +111,10 @@
   display: inline-block;
   margin-top: 0.75rem;
   color: #183153;
+}
+
+.pdf-message {
+  margin-top: 0.75rem;
 }
 
 /* Noscript fallback */
