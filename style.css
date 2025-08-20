@@ -14,7 +14,7 @@ body {
   padding: 1rem;
   position: sticky;
   top: 0;
-  z-index: 10;
+  z-index: 1000;
 }
 .nav-container {
   max-width: 960px;
@@ -431,4 +431,29 @@ h3 {
   margin: 0;
   font-size: 14px;
   color: #444;
+}
+
+@media (max-width: 640px) {
+  .nav-links {
+    overflow-x: auto;
+    flex-wrap: nowrap;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+  }
+
+  .nav-links::-webkit-scrollbar {
+    display: none;
+  }
+
+  .specs-grid {
+    max-height: 320px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .spec-card {
+    border: 1px solid #ddd;
+    padding: 14px;
+  }
 }
