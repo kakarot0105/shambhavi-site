@@ -48,6 +48,9 @@
               {
                 href: 'floorplan/JGD-Floorplan.pdf',
                 target: '_blank',
+                rel: 'noopener',
+                type: 'application/pdf',
+                download: 'JGD-Floorplan.pdf',
                 className: 'floorplan-link'
               },
               'View Full Floor Plan (PDF)'
@@ -58,12 +61,31 @@
       viewer = React.createElement(
         'div',
         { className: 'floorplan-viewer', role: 'region', 'aria-label': 'Floor Plan Viewer' },
-        React.createElement('object', {
-          data: 'floorplan/JGD-Floorplan.pdf',
-          type: 'application/pdf',
-          'aria-label': 'Floor Plan PDF Viewer',
-          className: 'floorplan-pdf'
-        })
+        React.createElement(
+          'object',
+          {
+            data: 'floorplan/JGD-Floorplan.pdf',
+            type: 'application/pdf',
+            'aria-label': 'Floor Plan PDF Viewer',
+            className: 'floorplan-pdf'
+          },
+          React.createElement(
+            'p',
+            null,
+            'Your browser does not support PDFs. ',
+            React.createElement(
+              'a',
+              {
+                href: 'floorplan/JGD-Floorplan.pdf',
+                target: '_blank',
+                rel: 'noopener',
+                type: 'application/pdf',
+                download: 'JGD-Floorplan.pdf'
+              },
+              'Download PDF'
+            )
+          )
+        )
       );
     } else if (viewerType === 'message') {
       viewer = React.createElement(
@@ -80,7 +102,9 @@
             className: 'floorplan-link',
             href: 'floorplan/JGD-Floorplan.pdf',
             target: '_blank',
-            download: ''
+            rel: 'noopener',
+            type: 'application/pdf',
+            download: 'JGD-Floorplan.pdf'
           },
           'Download Floor Plan (PDF)'
         )

@@ -122,6 +122,7 @@
   display: inline-block;
   margin-top: 0.75rem;
   color: #183153;
+  pointer-events: auto;
 }
 
 .floorplan-link[aria-disabled='true'] {
