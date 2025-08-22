@@ -3,122 +3,38 @@
 
   function FloorPlan() {
     const [open, setOpen] = useState(false);
-    const [viewerType, setViewerType] = useState(null); // 'image', 'pdf', 'message', 'pending'
-    const [pdfAvailable, setPdfAvailable] = useState(null);
+    const [hasImage, setHasImage] = useState(null);
+    const [showEmbed, setShowEmbed] = useState(false);
     const tsRef = useRef(Date.now());
+    const isIOS = /iPhone|iPad|iPod/i.test(navigator.userAgent);
 
     useEffect(() => {
-      if (!open || viewerType !== null) return;
-
+      if (!open || hasImage !== null) return;
       tsRef.current = Date.now();
-
       const img = new Image();
-      img.onload = () => setViewerType('image');
-      img.onerror = () => setViewerType('pending');
+      img.onload = () => setHasImage(true);
+      img.onerror = () => setHasImage(false);
       img.src = `images/floorplan1.png?v=${tsRef.current}`;
+    }, [open, hasImage]);
 
-      fetch('floorplan/JGD-Floorplan.pdf', { method: 'HEAD' })
-        .then(res => setPdfAvailable(res.ok))
-        .catch(() => setPdfAvailable(false));
-    }, [open, viewerType]);
-
-    useEffect(() => {
-      if (!open) return;
-      if (viewerType === 'pending' && pdfAvailable !== null) {
-        setViewerType(pdfAvailable ? 'pdf' : 'message');
-      }
-    }, [open, viewerType, pdfAvailable]);
-
-    let viewer = null;
-    if (viewerType === 'image') {
-      viewer = React.createElement(
-        'div',
-        { className: 'floorplan-viewer', role: 'region', 'aria-label': 'Floor Plan Viewer' },
-        React.createElement('img', {
-          src: `images/floorplan1.png?v=${tsRef.current}`,
-          loading: 'lazy',
-          decoding: 'async',
-          alt: 'Floor plan preview',
-          width: 1600,
-          height: 1000
-        }),
-        pdfAvailable
-          ? React.createElement(
-              'a',
-              {
-                href: 'floorplan/JGD-Floorplan.pdf',
-                target: '_blank',
-                rel: 'noopener',
-                type: 'application/pdf',
-                download: 'JGD-Floorplan.pdf',
-                className: 'floorplan-link'
-              },
-              'View Full Floor Plan (PDF)'
-            )
-          : null
-      );
-    } else if (viewerType === 'pdf') {
-      viewer = React.createElement(
-        'div',
-        { className: 'floorplan-viewer', role: 'region', 'aria-label': 'Floor Plan Viewer' },
-        React.createElement(
-          'object',
-          {
-            data: 'floorplan/JGD-Floorplan.pdf',
-            type: 'application/pdf',
-            'aria-label': 'Floor Plan PDF Viewer',
-            className: 'floorplan-pdf'
-          },
-          React.createElement(
-            'p',
-            null,
-            'Your browser does not support PDFs. ',
-            React.createElement(
-              'a',
-              {
-                href: 'floorplan/JGD-Floorplan.pdf',
-                target: '_blank',
-                rel: 'noopener',
-                type: 'application/pdf',
-                download: 'JGD-Floorplan.pdf'
-              },
-              'Download PDF'
-            )
-          )
-        )
-      );
-    } else if (viewerType === 'message') {
-      viewer = React.createElement(
-        'div',
-        { className: 'floorplan-viewer', role: 'region', 'aria-label': 'Floor Plan Viewer' },
-        React.createElement('p', { className: 'floorplan-message' }, 'Floor plan will be added shortly.')
+    let preview = null;
+    if (hasImage === true) {
+      preview = React.createElement('img', {
+        src: `images/floorplan1.png?v=${tsRef.current}`,
+        alt: 'Floor plan preview',
+        loading: 'lazy',
+        decoding: 'async'
+      });
+    } else if (hasImage === false) {
+      preview = React.createElement(
+        'p',
+        { className: 'floorplan-message' },
+        'Preview coming soon'
       );
     }
 
-    const downloadLink = pdfAvailable
-      ? React.createElement(
-          'a',
-          {
-            className: 'floorplan-link',
-            href: 'floorplan/JGD-Floorplan.pdf',
-            target: '_blank',
-            rel: 'noopener',
-            type: 'application/pdf',
-            download: 'JGD-Floorplan.pdf'
-          },
-          'Download Floor Plan (PDF)'
-        )
-      : React.createElement(
-          'a',
-          {
-            className: 'floorplan-link',
-            'aria-disabled': 'true'
-          },
-          'Download Floor Plan (PDF)'
-        );
-
     return React.createElement(
-      'div',
+      React.Fragment,
       null,
       React.createElement(
         'button',
@@ -134,10 +50,52 @@
         'div',
         {
           id: 'floorplan-content',
-          className: 'collapsible-content floorplan-wrapper' + (open ? ' open' : ' hidden')
+          className:
+            'collapsible-content floorplan-wrapper' + (open ? ' open' : ' hidden')
         },
-        viewer,
-        downloadLink
+        React.createElement('div', { className: 'floorplan-viewer' }, preview),
+        React.createElement(
+          'div',
+          { className: 'floorplan-actions' },
+          React.createElement(
+            'a',
+            {
+              href: 'floorplan/JGD-Floorplan.pdf',
+              target: '_blank',
+              rel: 'noopener',
+              type: 'application/pdf'
+            },
+            'Open Floor Plan (PDF)'
+          ),
+          React.createElement(
+            'a',
+            Object.assign(
+              {
+                href: 'floorplan/JGD-Floorplan.pdf',
+                target: '_blank',
+                rel: 'noopener',
+                type: 'application/pdf'
+              },
+              isIOS ? {} : { download: 'JGD-Floorplan.pdf' }
+            ),
+            'Download PDF'
+          ),
+          React.createElement(
+            'button',
+            {
+              className: 'btn btn-ghost floorplan-inline-btn',
+              onClick: () => setShowEmbed(true)
+            },
+            'Open Inline Viewer'
+          )
+        ),
+        showEmbed
+          ? React.createElement('object', {
+              className: 'floorplan-embed',
+              type: 'application/pdf',
+              data: 'floorplan/JGD-Floorplan.pdf'
+            })
+          : null
       )
     );
   }
