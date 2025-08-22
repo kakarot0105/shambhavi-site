@@ -89,11 +89,20 @@
 
   <section id="floorplan" class="section alt fade-in">
     <h2>Floor Plan</h2>
-    <div id="floorplan-root"></div>
+    <button id="floorplan-toggle" class="collapsible-toggle" aria-expanded="false" aria-controls="floorplan-content">Show Floor Plan</button>
+    <div id="floorplan-content" class="collapsible-content hidden">
+      <div class="fp-card" role="region" aria-label="Floor Plan Viewer">
+        <div id="floorplan-viewer" class="fp-box"></div>
+        <div class="fp-actions">
+          <a class="btn btn-ghost" href="floorplan/JGD-Floorplan.pdf" target="_blank" rel="noopener">Open Full PDF</a>
+          <a class="btn btn-primary" href="floorplan/JGD-Floorplan.pdf" download>Download PDF</a>
+        </div>
+      </div>
+    </div>
     <noscript>
       <a href="floorplan/JGD-Floorplan.pdf" target="_blank" rel="noopener" type="application/pdf" download="JGD-Floorplan.pdf">Download Floor Plan (PDF)</a>
-      </noscript>
-    </section>
+    </noscript>
+  </section>
 
   <section id="listings" class="section fade-in">
     <h2>Featured Listings</h2>
