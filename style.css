@@ -15,6 +15,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 1000;
+  pointer-events: auto;
 }
 .nav-container {
   max-width: 960px;
@@ -572,6 +573,7 @@ h3 {
 .fp-embed {
   width: 100%;
   height: 100%;
+  display: block;
   border: 0;
   border-radius: 12px;
   background: #fff;
@@ -598,5 +600,12 @@ h3 {
   .fp-box {
     height: 300px;
   }
+}
+
+.hidden { display: none !important; }
+.is-open { display: block !important; }
+
+@media (min-width: 1024px) {
+  .fp-box { height: clamp(480px, 70vh, 860px); }
 }
 

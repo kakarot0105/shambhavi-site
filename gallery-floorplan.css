@@ -27,7 +27,7 @@
   transition: max-height 0.4s ease, opacity 0.4s ease;
 }
 
-.collapsible-content.open {
+.collapsible-content.is-open {
   max-height: 2000px;
   opacity: 1;
 }
