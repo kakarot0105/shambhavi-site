@@ -23,12 +23,12 @@
       ),
       React.createElement(
         'div',
-        {
-          id: 'gallery-content',
-          className: 'collapsible-content' + (open ? ' open' : ' hidden'),
-          role: 'region',
-          'aria-label': 'Project gallery'
-        },
+          {
+            id: 'gallery-content',
+            className: 'collapsible-content' + (open ? ' is-open' : ' hidden'),
+            role: 'region',
+            'aria-label': 'Project gallery'
+          },
         React.createElement(
           'div',
           { className: 'gallery-grid' },
