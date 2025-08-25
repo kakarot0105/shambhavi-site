@@ -23,6 +23,10 @@ if (leadForm) {
       phone: leadForm.phone.value,
       message: leadForm.message.value
     };
+    const msg = encodeURIComponent(
+      `Name: ${data.from_name}\nEmail: ${data.from_email}\nPhone: ${data.phone}\nMessage: ${data.message}`
+    );
+    window.location.href = `https://wa.me/917013991990?text=${msg}`;
     emailjs.send('YOUR_SERVICE_ID', 'YOUR_LEAD_TEMPLATE_ID', data)
       .then(() => {
         alert('Thank you for contacting us!');
