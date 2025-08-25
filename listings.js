@@ -19,7 +19,7 @@
     {
       id: 2,
       title: "3BHK – Corner Unit",
-      image: "floorplan1.png",     // swap to your preferred image later
+      image: "hero.jpg",     // swap to your preferred image later
       beds: 3,
       baths: 3,
       size: 1590,
