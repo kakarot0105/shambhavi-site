@@ -14,7 +14,7 @@
       tower: "Block A",
       floor: 3,
       facing: "East",
-      link: "#enquire"
+      link: "https://wa.me/917013991990"
     },
     {
       id: 2,
@@ -27,7 +27,7 @@
       tower: "Block B",
       floor: 5,
       facing: "North-East",
-      link: "#enquire"
+      link: "https://wa.me/917013991990"
     }
   ];
 
@@ -47,7 +47,7 @@
       e("div", { className: "card-body" },
         e("div", { className: "submeta" }, `${item.tower} • Floor ${item.floor} • ${item.facing} facing`),
         e("div", { className: "cta-row" },
-          e("a", { className: "btn btn-primary", href: item.link }, "Enquire"),
+          e("a", { className: "btn btn-primary", href: item.link, target: "_blank", rel: "noopener" }, "Enquire"),
           e("button", { className: "btn btn-ghost", onClick: () => share(item) },
             e("i", { className: "fa-solid fa-share-nodes" }), " Share")
         )
